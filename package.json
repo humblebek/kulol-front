@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mdi/font": "^7.4.47",
     "@tailwindcss/vite": "^4.1.12",
     "aos": "^2.3.4",
     "core-js": "^3.45.0",
@@ -22,7 +23,9 @@
     "pinia": "^3.0.3",
     "swiper": "^11.2.10",
     "tailwindcss": "^4.1.12",
+    "three": "^0.179.1",
     "vue": "^3.5.18",
+    "vue-3d-loader": "^2.2.4",
     "vue-i18n": "^11.1.11",
     "vue-owl-carousel": "^2.0.3",
     "vue-router": "^4.5.1"

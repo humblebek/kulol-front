@@ -55,9 +55,9 @@
                     </div>
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8" data-aos="fade-up" data-aos-delay="100">
-                        <div v-for="(item, index) in productList.slice(0,4)" :key="index" class="group">
+                        <div v-for="(item, index) in productStore.products" :key="index" class="group">
                             <div class="relative overflow-hidden before:absolute card-gradient-overlay before:w-full before:h-full before:top-0 before:left-0 before:z-10 before:opacity-0 group-hover:before:opacity-100 before:duration-300 ">
-                                <img class="w-full transform duration-300 group-hover:scale-110" :src="item.image" alt="product-card">
+                                <img class="w-full transform duration-300 group-hover:scale-110" :src="safeGet(item, 'image', null)" alt="product-card">
 
                                 <div class="flex flex-col gap-[10px] absolute z-20 bottom-5 right-5">
                                     <button class="w-9 lg:w-12 h-9 p-2 lg:h-12 flex items-center justify-center transition-all duration-300 bg-white dark:bg-title bg-opacity-10 dark:bg-opacity-80 transform translate-y-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 quick-view tooltip-icon-2">
@@ -92,8 +92,8 @@
                                 </ul>
                             </div>
                             <div class="mt-5 md:mt-7">
-                                <h4 class="font-medium leading-none dark:text-white text-lg">{{item.price}}</h4>
-                                <h5 class="mt-3 text-xl font-normal dark:text-white leading-[1.5]"><router-link to="/product-details">{{item.name}}</router-link></h5>
+                                <h4 class="font-medium leading-none dark:text-white text-xl">{{safeGet(item, `translations.${$i18n.locale}.name`, "")}}</h4>
+                                <h5 class="mt-3 text-lg font-normal dark:text-white leading-[1.5]"><router-link :to="`/products/${safeGet(item, 'id', null)}`">{{safeGet(item, `translations.${$i18n.locale}.description`, "")}}</router-link></h5>
                             </div>
                         </div>
                     </div>
@@ -124,6 +124,7 @@
         <div class="s-py-100-50">
             <BestSeller/>
         </div> 
+       
 
         <div class="s-py-50-100">
             <div class="container">
@@ -137,7 +138,6 @@
                             </svg>                        
                         </router-link>
                     </div>
-                    
                     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-8" data-aos="fade-up" data-aos-delay="100">
                         <div v-for="(item, index) in productList.slice(8,12)" :key="index" class="group">
                             <div class="relative overflow-hidden before:absolute card-gradient-overlay before:w-full before:h-full before:top-0 before:left-0 before:z-10 before:opacity-0 group-hover:before:opacity-100 before:duration-300 ">
@@ -207,7 +207,7 @@
 </template>
 
 <script setup>
-    import { onMounted } from 'vue';
+    import { onMounted, ref } from 'vue';
     import NavbarFour from '@/components/navbar/navbar-four.vue';
     import BestSeller from '@/components/product/best-seller.vue';
     import PartnerOne from '@/components/partner/partner-one.vue';
@@ -222,8 +222,23 @@
     import { featureOne, productList } from '@/data/data';
     
     import Aos from 'aos';
+import { useProductStore } from '@/stores/productStore';
+import { safeGet } from '@/core/helpers/utilFunctions';
 
+    const productStore = useProductStore();
+    const filters = ref({
+        category_id: "",
+        status_id: ""
+    });
+
+    const getData = () => {
+        productStore.getProducts({
+            ...filters.value,
+            ...productStore.pagination
+        });
+    }
     onMounted(()=>{
+        getData();
         Aos.init()
     })
 

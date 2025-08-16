@@ -6,7 +6,7 @@ import { ofetch } from 'ofetch'
 
 export const $api = ofetch.create({
   // timeout: 5000,
-  baseURL: import.meta.env.VITE_API_QABULAPI_URL || '/api',
+  baseURL: import.meta.env.VITE_API_BASE_URL || '/api',
   async onRequest({ options }) {
     // const accessToken = useCookie('accessToken').value
     // if (accessToken) {

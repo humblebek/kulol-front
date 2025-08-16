@@ -1,7 +1,5 @@
-@charset "UTF-8";
 @import "tailwindcss";
 
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 @font-face {
   font-family: "July it";
@@ -63,7 +61,9 @@ Table of Content
   position: relative;
   -ms-touch-action: pan-Y;
   touch-action: manipulation;
+  backface-visibility: hidden;
   -moz-backface-visibility: hidden;
+  visibility: hidden;
 }
 
 .owl-custom-carousel .owl-stage:after {
@@ -78,14 +78,17 @@ Table of Content
 .owl-custom-carousel .owl-stage-outer {
   position: relative;
   overflow: hidden;
+  transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
 }
 
 .owl-custom-carousel .owl-item,
 .owl-custom-carousel .owl-wrapper {
+  backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -ms-backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
@@ -94,6 +97,7 @@ Table of Content
 .owl-custom-carousel .owl-item {
   min-height: 1px;
   float: left;
+  backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -webkit-touch-callout: none;
 }
@@ -101,8 +105,6 @@ Table of Content
 .owl-custom-carousel .owl-item img {
   display: block;
   max-width: 100%;
-}
-.partner .owl-custom-carousel .owl-item img {
 }
 
 .owl-custom-carousel .owl-dots.disabled,
@@ -239,6 +241,7 @@ Table of Content
   /* background: url('../owl.video.play.png') no-repeat; */
   cursor: pointer;
   z-index: 1;
+  backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -webkit-transition: -webkit-transform 0.1s ease;
   transition: -webkit-transform 0.1s ease;
@@ -301,6 +304,7 @@ Table of Content
   position: relative;
   -ms-touch-action: pan-Y;
   touch-action: manipulation;
+  backface-visibility: hidden;
   -moz-backface-visibility: hidden;
 }
 
@@ -316,14 +320,17 @@ Table of Content
 .owl-carousel .owl-stage-outer {
   position: relative;
   overflow: hidden;
+  transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
 }
 
 .owl-carousel .owl-item,
 .owl-carousel .owl-wrapper {
+  backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -ms-backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   -ms-transform: translate3d(0, 0, 0);
@@ -332,6 +339,7 @@ Table of Content
 .owl-carousel .owl-item {
   min-height: 1px;
   float: left;
+  backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -webkit-touch-callout: none;
 }
@@ -479,6 +487,7 @@ Table of Content
   /* background: url(owl.video.play.png) no-repeat; */
   cursor: pointer;
   z-index: 1;
+  backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -webkit-transition: -webkit-transform 0.1s ease;
   transition: -webkit-transform 0.1s ease;
@@ -4853,6 +4862,7 @@ table.dataTable.dtr-inline.collapsed.table-sm > tbody > tr > td:first-child:befo
   z-index: 1043;
   position: fixed;
   outline: none !important;
+  backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
 
@@ -4965,6 +4975,7 @@ button.mfp-arrow {
   cursor: pointer;
   background: transparent;
   border: 0;
+  appearance: none;
   -webkit-appearance: none;
   display: block;
   outline: none;
@@ -6178,53 +6189,66 @@ img.mfp-img {
 /* Corner radius */
 .ui-corner-tl {
   -moz-border-radius-topleft: 4px;
+  border-top-left-radius: 4px;
   -webkit-border-top-left-radius: 4px;
 }
 
 .ui-corner-tr {
   -moz-border-radius-topright: 4px;
+  border-top-right-radius: 4px;
   -webkit-border-top-right-radius: 4px;
 }
 
 .ui-corner-bl {
   -moz-border-radius-bottomleft: 4px;
+  border-bottom-left-radius: 4px;
   -webkit-border-bottom-left-radius: 4px;
 }
 
 .ui-corner-br {
   -moz-border-radius-bottomright: 4px;
+  border-bottom-right-radius: 4px;
   -webkit-border-bottom-right-radius: 4px;
 }
 
 .ui-corner-top {
   -moz-border-radius-topleft: 4px;
+  border-top-left-radius: 4px;
   -webkit-border-top-left-radius: 4px;
   -moz-border-radius-topright: 4px;
+  border-top-right-radius: 4px;
   -webkit-border-top-right-radius: 4px;
 }
 
 .ui-corner-bottom {
   -moz-border-radius-bottomleft: 4px;
+  border-bottom-left-radius: 4px;
   -webkit-border-bottom-left-radius: 4px;
   -moz-border-radius-bottomright: 4px;
+  border-bottom-right-radius: 4px;
   -webkit-border-bottom-right-radius: 4px;
 }
 
 .ui-corner-right {
   -moz-border-radius-topright: 4px;
+  border-top-right-radius: 4px;
   -webkit-border-top-right-radius: 4px;
   -moz-border-radius-bottomright: 4px;
+  border-bottom-right-radius: 4px;
   -webkit-border-bottom-right-radius: 4px;
 }
 
 .ui-corner-left {
   -moz-border-radius-topleft: 4px;
+  border-top-left-radius: 4px;
   -webkit-border-top-left-radius: 4px;
   -moz-border-radius-bottomleft: 4px;
+  border-bottom-left-radius: 4px;
   -webkit-border-bottom-left-radius: 4px;
 }
 
 .ui-corner-all {
+  border-radius: 4px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
 }
@@ -6242,6 +6266,7 @@ img.mfp-img {
   /* background: #000000 url(images/ui-bg_flat_10_000000_40x100.png) 50% 50% repeat-x; */
   opacity: 0.2;
   filter: Alpha(Opacity=20);
+  border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
 }
@@ -9368,6 +9393,7 @@ button,
 input:where([type='button']),
 input:where([type='reset']),
 input:where([type='submit']) {
+  appearance: button; /* 1 */
   -webkit-appearance: button; /* 1 */
   background-color: transparent; /* 2 */
   background-image: none; /* 2 */
@@ -9402,6 +9428,7 @@ Correct the cursor style of increment and decrement buttons in Safari.
 2. Correct the outline style in Safari.
 */
 [type='search'] {
+  appearance: textfield; /* 1 */
   -webkit-appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
 }
@@ -12603,6 +12630,7 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number] {
   -webkit-appearance: none;
   margin: 0;
+  appearance: textfield !important;
   -moz-appearance: textfield !important;
 }
 
