@@ -4,7 +4,7 @@ import { defineStore } from "pinia";
 export const useCategoryStore = defineStore("category", {
     state: () => ({
         isLoading: false,
-        products: null,
+        categories: null,
         pagination: {
             current_page: 1,
             per_page: 0,
@@ -17,7 +17,9 @@ export const useCategoryStore = defineStore("category", {
             return new Promise((resolve, reject) => {
                 getCategories(queries)
                     .then(res => {
-                        console.log(res);
+                        if(res && res.data) {
+                            this.categories = res['data'];
+                        }
                         resolve(res['data'])
                     }).catch(err => {
                         reject(err);

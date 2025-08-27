@@ -1,3 +1,10 @@
 {
-    "hello": "salom uz ediku"
+    "Category": "Kategoriya",
+    "Size": "O'lchami",
+    "Home": "Bosh sahifa",
+    "Contact": "Aloqa",
+    "About us": "Biz haqimizda",
+    "Media": "Media",
+    "Products": "Mahsulotlar",
+    "Categories": "Kategoriyalar"
 }

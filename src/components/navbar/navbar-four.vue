@@ -127,6 +127,33 @@ const current = ref(router.path);
 
 const scroll = ref(false)
 
+
+const navItems = ref([
+    {
+        to: '/',
+        text: 'Home',
+
+    },
+    {
+        to: '/products',
+        text: 'Products',
+
+    },
+    {
+        to: '/contact',
+        text: 'Contact',
+
+    },
+    {
+        to: '/about-us',
+        text: 'About Us',
+    },
+    {
+        to: '/media',
+        text: 'Media',
+    },
+])
+
 const handleScroll = () => {
     if (window.scrollY >= 50) {
         scroll.value = true

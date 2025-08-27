@@ -1,3 +1,10 @@
 {
-    "hello": "salom en"
+    "Category": "Category",
+    "Size": "Size",
+    "Home": "Home",
+    "Contact": "Contact",
+    "About us": "About us",
+    "Media": "Media",
+    "Products": "Products",
+    "Categories": "Categories"
 }

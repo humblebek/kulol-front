@@ -15,6 +15,7 @@ import ms from './locales/ms.json'
 
 export const i18n = createI18n({
     locale: getItem(LANG_STORAGE_KEY) || 'uz',
+    legacy: false,
     fallbackLocale: getItem(LANG_STORAGE_KEY) || 'uz',
     messages: {
         en,

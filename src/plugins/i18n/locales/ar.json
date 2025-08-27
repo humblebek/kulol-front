@@ -1,3 +1,10 @@
 {
-    "hello": "salom ar"
+    "Category": "الفئة",
+    "Size": "الحجم",
+    "Home": "الصفحة الرئيسية",
+    "Contact": "اتصل بنا",
+    "About us": "معلومات عنا",
+    "Media": "وسائط",
+    "Products": "منتجات",
+    "Categories": "الفئات"
 }

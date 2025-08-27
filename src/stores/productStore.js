@@ -17,7 +17,6 @@ export const useProductStore = defineStore("product", {
             return new Promise((resolve, reject) => {
                 getProducts(queries)
                     .then(res => {
-                        console.log(res.data);
                         this.products = res['data'];
                         resolve(res);
                     }).catch(error => {

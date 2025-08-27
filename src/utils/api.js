@@ -4,6 +4,8 @@
 // import { _i18n } from '@/plugins/i18n'
 import { ofetch } from 'ofetch'
 
+import { useGlobalOverlay } from '@/composable/useGlobalOverlay'
+const { show, hide } = useGlobalOverlay()
 export const $api = ofetch.create({
   // timeout: 5000,
   baseURL: import.meta.env.VITE_API_BASE_URL || '/api',
@@ -16,12 +18,15 @@ export const $api = ofetch.create({
     //     Authorization: `Bearer ${accessToken}`,
     //   }
     // }
+    show();
   },
   async onRequestError(error) {
+    hide();
     // toast.error("Request error")
     //   toast.error(_i18n.global.t("Server Error: An internal server error occurred."))
   },
   async onResponseError(error) {
+    hide();
     // if(error.response.status == 500) {
     // } else 
     // if(error.response.status == 401) {
@@ -33,5 +38,9 @@ export const $api = ofetch.create({
     //   router.push('/login');
     //   toast.error(error.response?._data.message)
     // }
+  },
+  async onResponse(response) {
+    hide();
+    return response;
   }
 });

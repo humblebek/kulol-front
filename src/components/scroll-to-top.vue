@@ -1,7 +1,7 @@
 <template>
     <div class="fixed bottom-4 right-4 z-50">
         <button v-if="scroll" @click="topFunction" class="bg-[#BB976D] text-white hover:bg-black size-10 shadow-lg transition duration-300">
-        <i class="fa-solid fa-arrow-up"></i>
+        <i class="mdi mdi-arrow-up"></i>
         </button>
     </div>
 </template>
