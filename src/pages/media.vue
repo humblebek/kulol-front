@@ -1,4 +1,7 @@
 <template>
+    <Head>
+        <title>{{ $t("Media") }}</title>
+    </Head>
     <div>
         <NavbarOne/>
 

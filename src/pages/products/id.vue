@@ -1,4 +1,8 @@
 <template>
+    
+    <Head>
+        <title>{{safeGet(product, `translations.${$i18n.locale}.name`, "")}}</title>
+    </Head>
     <div>
         <NavbarOne/>
 

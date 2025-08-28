@@ -1,14 +1,18 @@
 <template>
+    
+    <Head>
+        <title>{{ $t("Contact") }}</title>
+    </Head>
     <div>
         <NavbarOne/>
 
         <div class="flex items-center gap-4 flex-wrap bg-overlay p-14 sm:p-16 before:bg-title before:bg-opacity-70" :style="{backgroundImage:'url('+ bg +')'}">
             <div class="text-center w-full">
-                <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">Contact Us</h2>
+                <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">{{ $t("Contact us") }}</h2>
                 <ul class="flex items-center justify-center gap-[10px] text-base md:text-lg leading-none font-normal text-white mt-3 md:mt-4">
-                    <li><router-link to="/">Home</router-link></li>
+                    <li><router-link to="/">{{ $t("Home") }}</router-link></li>
                     <li>/</li>
-                    <li class="text-primary">Contact</li>
+                    <li class="text-primary">{{ $t("Contact") }}</li>
                 </ul>
             </div>
         </div>
@@ -31,7 +35,7 @@
                             <div>
                                 <div class="grid sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-5 sm:gap-6">
                                     <div>
-                                        <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">Full Name</label>
+                                        <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">{{ $t("Full Name") }}</label>
                                         <input class="w-full h-12 md:h-14 bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="text" placeholder="Enter your full name">
                                     </div>
                                     <div>

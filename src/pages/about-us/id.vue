@@ -1,4 +1,7 @@
 <template>
+     <Head>
+        <title>{{ safeGet(user, `translations.${$i18n.locale}.name`, '') }}</title>
+    </Head>
     <NavbarOne />
   <main class="min-h-screen bg-gray-50 dark:bg-gray-900 py-10">
     <div class="container mx-auto max-w-7xl px-4" v-if="user">
@@ -121,7 +124,9 @@
       </div>
 
     </div>
+    
   </main>
+  <FooterOne/>        
 </template>
 
 <script setup>
@@ -131,6 +136,7 @@ import { useRoute } from 'vue-router';
 import { onMounted, computed, ref } from 'vue';
 import { safeGet } from '@/core/helpers/utilFunctions';
 import { storageUrl } from '@/core/helpers/envGetters';
+import FooterOne from '@/components/footer/footer-one.vue';
 const aboutStore = useAboutStore();
 const route = useRoute();
 const paramId = computed(() => route.params.id);

@@ -1,4 +1,7 @@
 <template>
+    <Head>
+        <title>{{ $t("Home") }}</title>
+    </Head>
     <div>
         <NavbarOne/>
 
@@ -85,7 +88,25 @@
                 </div>
             </div>
         </div>
-
+      <div class="s-py-100 bg-[#f5f5f5] dark:bg-dark-secondary">
+            <div class="container">
+                <div class="max-w-1366 mx-auto">
+                    <div class="mb-6 pb-4 md:pb-6 border-b border-bdr-clr dark:border-bdr-clr-drk" data-aos="fade-up">
+                        <h2 class="font-semibold leading-none text-2xl sm:text-3xl lg:text-4xl text-center  sm:text-left">Why you Choose Us</h2>
+                    </div>
+                    <div class="grid sm:grid-cols-2 lg:flex lg:justify-between gap-7 flex-wrap lg:flex-nowrap">
+                        <div v-for="(item, index) in featureOne.slice(0,4)" :key="index" class="lg:max-w-[290px] w-full 2xl:flex items-center justify-between gap-7" data-aos="fade-up" data-aos-delay="200">
+                            <div class="w-[1px] h-[120px] border-l border-dashed border-primary hidden 2xl:block" :class="index === 0 ? '2xl:hidden' : ''"></div>
+                            <div class="text-center sm:text-left lg:max-w-[220px] w-full">
+                                <img :src="item.image" alt="" class='size-12 mx-auto sm:mx-0' />
+                                <h5 class="font-semibold text-xl md:text-2xl mt-3 md:mt-7">Easy to Return</h5>
+                                <p class="mt-2 sm:mt-3">Satisfaction guaranteed or your money back! Enjoy stress-free returns with our hassle-free process. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- <div class="s-py-100 bg-[#f5f5f5] dark:bg-dark-secondary">
             <div class="container">
                 <div class="max-w-1366 mx-auto">
@@ -141,6 +162,8 @@ import { storageUrl } from '@/core/helpers/envGetters';
 import { useCategoryStore } from '@/stores/categoryStore';
 import FooterOne from '@/components/footer/footer-one.vue';
 import NavbarOne from '@/components/navbar/navbar-one.vue';
+import { featureOne } from '@/data/data';
+import { Head } from '@unhead/vue/components'
 
     const productStore = useProductStore();
     const categoryStore = useCategoryStore();

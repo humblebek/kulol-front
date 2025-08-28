@@ -1,4 +1,7 @@
 <template>
+    <Head>
+        <title>{{ $t("Products") }}</title>
+    </Head>
     <div>
         <NavbarOne/>
 
