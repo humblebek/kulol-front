@@ -4,11 +4,11 @@
 
         <div class="flex items-center gap-4 flex-wrap bg-overlay p-14 sm:p-16 before:bg-title before:bg-opacity-70" :style="{backgroundImage:'url(' + bg + ')'}">
             <div class="text-center w-full">
-                <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">Portfolio</h2>
+                <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">{{ $t("Media") }}</h2>
                 <ul class="flex items-center justify-center gap-[10px] text-base md:text-lg leading-none font-normal text-white mt-3 md:mt-4">
-                    <li><router-link to="/">Home</router-link></li>
+                    <li><router-link to="/">{{ $t("Home") }}</router-link></li>
                     <li>/</li>
-                    <li class="text-primary">Portfolio</li>
+                    <li class="text-primary">{{ $t("Media") }}</li>
                 </ul>
             </div>
         </div>
@@ -16,26 +16,6 @@
         <div class="s-py-100 overflow-hidden relative">
             <div class="container-fluid">
                 <div class="max-w-[1720px] mx-auto" data-aos="fade-up" data-aos-delay="100">
-                    <div class="portfolio1-button flex justify-center gap-[15px] flex-wrap mb-8 md:mb-12">
-                        <button class="btn btn-sm btn-theme-outline" :class="activeFilter === '*' ? 'active' : ''" @click="tabChange('*')" data-text="All">
-                            <span>All</span>
-                        </button>
-                        <button class="btn btn-sm btn-theme-outline" :class="activeFilter === 'Sofa' ? 'active' : ''" @click="tabChange('Sofa')" data-text="Sofa & Chair">
-                            <span>Sofa & Chair</span>
-                        </button>
-                        <button class="btn btn-sm btn-theme-outline" :class="activeFilter === 'Interior' ? 'active' : ''" @click="tabChange('Interior')" data-text="Full Interior">
-                            <span>Full Interior</span>
-                        </button>
-                        <button class="btn btn-sm btn-theme-outline" :class="activeFilter === 'Vase' ? 'active' : ''" @click="tabChange('Vase')" data-text="Lamp & Vase">
-                            <span>Lamp & Vase</span>
-                        </button>
-                        <button class="btn btn-sm btn-theme-outline" :class="activeFilter === 'Table' ? 'active' : ''" @click="tabChange('Table')" data-text="Table">
-                            <span>Table</span>
-                        </button>
-                        <button class="btn btn-sm btn-theme-outline" :class="activeFilter === 'Design' ? 'active' : ''" @click="tabChange('Design')" data-text="Art Design">
-                            <span>Art Design</span>
-                        </button>
-                    </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-6 md:gap-4 gap-2 -m-[10px] md:-m-[15px] mt-5 mb-10">
                         <div v-for="(media, index) in mediaStore.medias" :key="index" class="rounded-2xl overflow-hidden  border-2 border-amber-700">
                           <a class="relative block" :href="safeGet(media, 'link', '#')" target="_blank">

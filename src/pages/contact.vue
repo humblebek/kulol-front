@@ -38,20 +38,9 @@
                                         <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">Email</label>
                                         <input class="w-full h-12 md:h-14 bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="email" placeholder="Enter your email address">
                                     </div>
-                                    <div>
+                                    <div class="col-span-2">
                                         <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">Phone No.</label>
                                         <input class="w-full h-12 md:h-14 bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="number" placeholder="Type your phone number">
-                                    </div>
-                                    <div>
-                                        <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">Subject</label>
-                                        <div class="nice-select select-active bg-snow dark:bg-dark-secondary" :class="isOpen ? 'open' : ''" @click="toggleDropdown">
-                                            <span class="current">{{ selectedOption }}</span>
-                                            <ul class="list">
-                                                <li v-for="(item, index) in options" :key="index" data-value="1" class="option" @click="handleSelect(item, $event)">
-                                                    {{ item }}
-                                                </li>
-                                            </ul>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="mt-5 sm:gap-6">
@@ -73,7 +62,7 @@
         <div class="s-pb-100" data-aos="fade-up">
             <div class="container-fluid">
                 <div class="max-w-[1720px] mx-auto">
-                    <iframe class="w-full h-[400px] md:h-[600px]" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28951.79709608298!2d91.85394430000001!3d24.898846749999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m3!3e6!4m0!4m0!5e0!3m2!1sen!2sbd!4v1668006237424!5m2!1sen!2sbd" style="border:0;"></iframe>
+                    <iframe class="w-full h-[400px] md:h-[600px]" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5994.3212116940485!2d69.2788905!3d41.3053696!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8ad678db7371%3A0xdd20e1d940f6a283!2z0KLQsNGI0LrQtdC90YLRgdC60LjQuSDQk9C-0YHRg9C00LDMgdGA0YHRgtCy0LXQvdC90YvQuSDQo9C90LjQstC10YDRgdC40YLQtdGCINCS0L7RgdGC0L7QutC-0LLQtdC00LXQvdC40Y8!5e0!3m2!1sru!2s!4v1756363476231!5m2!1sru!2s" style="border:0;"></iframe>
                 </div>
             </div>
         </div>
@@ -100,10 +89,10 @@ import ScrollToTop from '@/components/scroll-to-top.vue';
     })
 
 
-    const getData = (params) => {
-        // Fetch or process data based on params
-        console.log("Fetching data with params:", params);
-    };
+    // const getData = (params) => {
+    //     // Fetch or process data based on params
+    //     console.log("Fetching data with params:", params);
+    // };
     
     const isOpen = ref(false)
     const selectedOption = ref('Navana Furniture')

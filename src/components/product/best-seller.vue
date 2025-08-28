@@ -126,7 +126,6 @@ import { storageUrl } from '@/core/helpers/envGetters';
         getProducts({
             category_id: secondCategoryId.value
         }).then(res=>{
-            console.log(res);
             products.value.data = res.data;
             products.value.pagination = res.meta;
 

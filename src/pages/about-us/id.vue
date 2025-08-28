@@ -24,22 +24,22 @@
 
           <dl class="mt-6 space-y-4">
             <div class="flex">
-              <dt class="w-40 shrink-0 text-gray-500 dark:text-gray-400 font-medium">Ilmiy darajasi:</dt>
+              <dt class="w-40 shrink-0 text-gray-500 dark:text-gray-400 font-medium">{{ $t("Academic degree") }}:</dt>
               <dd class="text-gray-800 dark:text-gray-100">        {{ safeGet(user, `translations.${$i18n.locale}.edu_level`, '') }}
                 </dd>
             </div>
            
             <div class="flex">
-              <dt class="w-40 shrink-0 text-gray-500 dark:text-gray-400 font-medium">Tug'ilgan sana:</dt>
+              <dt class="w-40 shrink-0 text-gray-500 dark:text-gray-400 font-medium">{{ $t("Date of birth") }}:</dt>
               <dd class="text-gray-800 dark:text-gray-100">        {{ $d(safeGet(user, `birth_date`, '')) }}</dd>
             </div>
             <div>
-              <dt class="text-gray-500 dark:text-gray-400 font-medium">Bilgan tillari:</dt>
+              <dt class="text-gray-500 dark:text-gray-400 font-medium">{{ $t("Languages") }}:</dt>
               <dd class="mt-2 flex flex-wrap gap-2">
                 <span
                   v-for="(lang, i) in  safeGet(user, `translations.${$i18n.locale}.languages`, '').split(',')"
                   :key="i"
-                  class="inline-flex items-center rounded-full px-3 py-1 text-sm bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-200 dark:bg-blue-900/30 dark:text-blue-200 dark:ring-blue-800"
+                  class="inline-flex items-center rounded-full px-3 py-1 text-sm bg-[#BB976D20] text-[#BB976D] ring-1 ring-inset ring-blue-200 dark:bg-blue-900/30 dark:text-blue-200 dark:ring-blue-800"
                 >
                   {{ lang }}
                 </span>
@@ -53,13 +53,13 @@
           <!-- Education -->
           <section class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
             <header class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-              <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">Ta'lim</h3>
+              <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">{{ $t("Education") }}</h3>
             </header>
             <div class="px-6 py-5">
               <ul class="space-y-4">
                 <li v-for="(e, i) in safeGet(user, 'educations', [])" :key="i" class="flex items-start gap-3">
                     <!-- {{ e }} -->
-                  <span class="mt-2 h-2 w-2 rounded-full bg-blue-500"></span>
+                  <span class="mt-2 h-2 w-2 rounded-full bg-[#BB976D]"></span>
                   <p class="text-gray-700 dark:text-gray-200">
                     {{ safeGet(e, `translations.${$i18n.locale}.text`, '') }}
                   </p>
@@ -71,7 +71,7 @@
           <!-- Publications -->
           <section class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
             <header class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-              <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">Ilmiy nashrlar</h3>
+              <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">{{ $t("Scientific publications") }}</h3>
             </header>
 
             <div class="divide-y divide-gray-200 dark:divide-gray-700">
@@ -138,7 +138,6 @@ const paramId = computed(() => route.params.id);
 const user = ref(null);
 const getData = () => {
     aboutStore.getAbout({about_id: paramId.value}).then(res => {
-        console.log(res, "About detail data")
         user.value = res.data;
     });
 }

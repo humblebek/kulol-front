@@ -13,21 +13,21 @@
                 <div class="hidden 2xl:block h-[121px] w-[1px] transform translate-y-6 border border-white border-dashed border-title dark:border-white"></div>
                 <div class="2xl:max-w-[1057px] w-full grid text-white grid-cols-2 sm:grid-cols-3 lg:flex items-start justify-between gap-10">
                     <div>
-                        <h4 class="leading-none text-white mb-5 md:mb-6 text-xl">Sitemap</h4>
+                        <h4 class="leading-none text-white mb-5 md:mb-6 text-xl">{{ $t("Sitemap") }}</h4>
                         <ul class="text-title text-white dark:text-white  leading-none flex flex-col gap-4">
                             <li v-for="(item, index) in navItems" :key="index" class="duration-100 hover:text-primary inline-block group"><router-link class="text-underline-primary" :to="item.to">{{$t(item.text)}}</router-link></li>
                         </ul>
                     </div>
                     <div class="h-[121px] w-[1px] transform translate-y-6 border border-dashed border-title border-white dark:border-white hidden lg:block"></div>
                     <div>
-                        <h4 class="text-white leading-none mb-5 md:mb-6 text-xl">Others</h4>
+                        <h4 class="text-white leading-none mb-5 md:mb-6 text-xl">{{ $t("Others") }}</h4>
                         <ul class="text-title text-white dark:text-white leading-none flex flex-col gap-4">
                             <li v-for="(item, index) in footerLink2" :key="index" class="duration-100 hover:text-primary inline-block group"><router-link class="text-underline-primary" :to="item.link">{{item.name}}</router-link></li>
                         </ul>
                     </div>
                     <div class="h-[121px] w-[1px] transform translate-y-6 border border-dashed border-title border-white dark:border-white hidden lg:block"></div>
                     <div>
-                        <h4 class="leading-none text-white mb-5 md:mb-6 text-xl">Social Media</h4>
+                        <h4 class="leading-none text-white mb-5 md:mb-6 text-xl">{{ $t("Social media") }}</h4>
                         <ul class="text-title text-white dark:text-white leading-none flex flex-col gap-4">
                             <li class="duration-100 hover:text-primary inline-block group"><router-link class="gap-3 flex items-center" to="#">
                                 <i class="mdi mdi-facebook  dark:text-white duration-300 group-hover:text-primary"></i>                                     
@@ -51,7 +51,7 @@
                     <div >
                         <h4 class="leading-none text-white mb-5 md:mb-6 text-xl">{{ $t('Categories') }}</h4>
                         <ul class="text-title text-white dark:text-white leading-none flex flex-col gap-4">
-                            <li v-for="(item, index) in (categoryStore.categories ?? [])" :key="index" class="duration-100 hover:text-primary inline-block group">
+                            <li v-for="(item, index) in (categoryStore.categories ?? []).slice(0, 5)" :key="index" class="duration-100 hover:text-primary inline-block group">
                                 <router-link class="text-underline-primary" :to="`/products?category_id=${item.id}`">
                                     {{safeGet(item, `translations.${$i18n.locale}.name`, '')}}
                                 </router-link></li>
@@ -68,11 +68,15 @@
 
 <script setup>
     import bg from '@/assets/img/bg/footer.jpg'
-    import { footerLink2, footerLink3 } from '@/data/nav-data';
     import { ref } from 'vue';
     import { useCategoryStore } from '@/stores/categoryStore';
-import { navItems } from '@/core/constants';
-import { safeGet } from '@/core/helpers/utilFunctions';
+    import { navItems } from '@/core/constants';
+    import { safeGet } from '@/core/helpers/utilFunctions';
+
+    import logoDark from '@/assets/img/svg/logo.svg'
+    import logoLight from '@/assets/img/svg/logo-light.svg'
+import { footerLink2 } from '@/data/nav-data';
+
 
     const categoryStore = useCategoryStore();
     const year = ref(new Date().getFullYear());
