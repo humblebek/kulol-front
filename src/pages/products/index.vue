@@ -73,8 +73,10 @@
     import { useCategoryStore } from '@/stores/categoryStore';
 import { safeGet } from '@/core/helpers/utilFunctions';
 import { getProducts } from '@/api/productApi';
-
-
+import { useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
+    const route = useRoute();
+    const router = useRouter();
     const filters = ref({
         category_id: null,
         current_page: 1,
@@ -87,14 +89,15 @@ import { getProducts } from '@/api/productApi';
     }});
 
     watch(()=>filters.value, ()=>{
+        router.push({path: '/products', query: filters.value});
         getProductsData();
+
     }, {deep: true})
 
     const categoryStore = useCategoryStore();
 
     const getProductsData = () => {
         getProducts(filters.value).then(res=>{
-            console.log(res);
             products.value.data = res.data;
             products.value.pagination = res.meta;
 
@@ -106,7 +109,7 @@ import { getProducts } from '@/api/productApi';
         }
     }
     onMounted(()=>{
-
+        filters.value.category_id = route.query.category_id ?? null;
         Aos.init()
         getCategories();
         getProductsData();
