@@ -3,46 +3,46 @@
         <title>{{ safeGet(user, `translations.${$i18n.locale}.name`, '') }}</title>
     </Head>
     <NavbarOne />
-  <main class="min-h-screen bg-gray-50 dark:bg-gray-900 py-10">
+  <main class="min-h-screen bg-gray-50  py-10">
     <div class="container mx-auto max-w-7xl px-4" v-if="user">
       <!-- Title -->
-      <h1 class="text-center text-4xl md:text-5xl font-extrabold tracking-tight text-gray-800 dark:text-gray-100">
+      <h1 class="text-center text-4xl md:text-5xl font-extrabold tracking-tight text-gray-800 ">
         {{ safeGet(user, `translations.${$i18n.locale}.name`, '') }}
       </h1>
 
       <div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
         <!-- Left: Profile card -->
         <section
-          class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 lg:col-span-1">
+          class="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 lg:col-span-1">
           <div class="flex flex-col items-center">
             <img
               :src="storageUrl(safeGet(user, 'about_image', ''))"
               alt="Profile photo"
-              class="w-40 h-40 rounded-xl object-cover ring-1 ring-gray-200 dark:ring-gray-700"
+              class="w-40 h-40 rounded-xl object-cover ring-1 ring-gray-200 "
             />
-            <h2 class="mt-4 text-2xl font-semibold text-gray-900 dark:text-gray-100 text-center">
+            <h2 class="mt-4 text-2xl font-semibold text-gray-900  text-center">
               {{ safeGet(user, `translations.${$i18n.locale}.name`, '') }}
             </h2>
           </div>
 
           <dl class="mt-6 space-y-4">
             <div class="flex">
-              <dt class="w-40 shrink-0 text-gray-500 dark:text-gray-400 font-medium">{{ $t("Academic degree") }}:</dt>
-              <dd class="text-gray-800 dark:text-gray-100">        {{ safeGet(user, `translations.${$i18n.locale}.edu_level`, '') }}
+              <dt class="w-40 shrink-0 text-gray-500  font-medium">{{ $t("Academic degree") }}:</dt>
+              <dd class="text-gray-800 ">        {{ safeGet(user, `translations.${$i18n.locale}.edu_level`, '') }}
                 </dd>
             </div>
            
             <div class="flex">
-              <dt class="w-40 shrink-0 text-gray-500 dark:text-gray-400 font-medium">{{ $t("Date of birth") }}:</dt>
-              <dd class="text-gray-800 dark:text-gray-100">        {{ $d(safeGet(user, `birth_date`, '')) }}</dd>
+              <dt class="w-40 shrink-0 text-gray-500 font-medium">{{ $t("Date of birth") }}:</dt>
+              <dd class="text-gray-800 ">        {{ $d(safeGet(user, `birth_date`, '')) }}</dd>
             </div>
             <div>
-              <dt class="text-gray-500 dark:text-gray-400 font-medium">{{ $t("Languages") }}:</dt>
+              <dt class="text-gray-500  font-medium">{{ $t("Languages") }}:</dt>
               <dd class="mt-2 flex flex-wrap gap-2">
                 <span
                   v-for="(lang, i) in  safeGet(user, `translations.${$i18n.locale}.languages`, '').split(',')"
                   :key="i"
-                  class="inline-flex items-center rounded-full px-3 py-1 text-sm bg-[#BB976D20] text-[#BB976D] ring-1 ring-inset ring-blue-200 dark:bg-blue-900/30 dark:text-blue-200 dark:ring-blue-800"
+                  class="inline-flex items-center rounded-full px-3 py-1 text-sm bg-[#BB976D20] text-[#BB976D] ring-1 ring-inset ring-blue-200"
                 >
                   {{ lang }}
                 </span>
@@ -54,16 +54,16 @@
         <!-- Right: Education + Publications -->
         <div class="lg:col-span-2 space-y-6">
           <!-- Education -->
-          <section class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
-            <header class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-              <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">{{ $t("Education") }}</h3>
+          <section class="bg-white rounded-2xl shadow-sm border border-gray-200 ">
+            <header class="px-6 py-4 border-b border-gray-200 ">
+              <h3 class="text-lg font-semibold text-gray-800 ">{{ $t("Education") }}</h3>
             </header>
             <div class="px-6 py-5">
               <ul class="space-y-4">
                 <li v-for="(e, i) in safeGet(user, 'educations', [])" :key="i" class="flex items-start gap-3">
                     <!-- {{ e }} -->
                   <span class="mt-2 h-2 w-2 rounded-full bg-[#BB976D]"></span>
-                  <p class="text-gray-700 dark:text-gray-200">
+                  <p class="text-gray-700 ">
                     {{ safeGet(e, `translations.${$i18n.locale}.text`, '') }}
                   </p>
                 </li>
@@ -72,12 +72,12 @@
           </section>
 
           <!-- Publications -->
-          <section class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
-            <header class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-              <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-100">{{ $t("Scientific publications") }}</h3>
+          <section class="bg-white rounded-2xl shadow-sm border border-gray-200">
+            <header class="px-6 py-4 border-b border-gray-200">
+              <h3 class="text-lg font-semibold text-gray-800 ">{{ $t("Scientific publications") }}</h3>
             </header>
 
-            <div class="divide-y divide-gray-200 dark:divide-gray-700">
+            <div class="divide-y divide-gray-200 ">
               <article
                 v-for="(pub, i) in safeGet(user, 'publications', [])"
                 :key="i"
@@ -87,17 +87,17 @@
                 <img
                   :src="storageUrl(safeGet(pub, 'pub_image', ''))"
                   alt=""
-                  class="w-24 h-28 rounded-md object-cover ring-1 ring-gray-200 dark:ring-gray-700 shrink-0"
+                  class="w-24 h-28 rounded-md object-cover ring-1 ring-gray-200 shrink-0"
                 />
                 <div class="min-w-0">
-                  <h4 class="text-base md:text-lg font-semibold text-gray-900 dark:text-gray-100 hover:underline cursor-pointer">
+                  <h4 class="text-base md:text-lg font-semibold text-gray-900  hover:underline cursor-pointer">
                     {{ safeGet(pub, `translations.${$i18n.locale}.title`, '') }}
                   </h4>
-                  <p class="text-sm italic text-gray-500 dark:text-gray-400 mt-1">
+                  <p class="text-sm italic text-gray-500 mt-1">
                     {{ safeGet(pub, `translations.${$i18n.locale}.conference_name`, '') }}
                   </p>
 
-                  <div class="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-600 dark:text-gray-300">
+                  <div class="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-600 ">
                     <span class="inline-flex items-baseline gap-1">
                       <span class="w-4 h-4 mdi mdi-calendar"></span>: {{ safeGet(pub, 'date', '') }}
                     </span>
@@ -108,7 +108,7 @@
                     <a
                       :href="safeGet(pub, 'link', '#')"
                       target="_blank"
-                      class="inline-flex items-baseline gap-1 text-blue-600 hover:underline dark:text-blue-400"
+                      class="inline-flex items-baseline gap-1 text-blue-600 hover:underline "
                     >
                     <span class="mdi mdi-link-variant w-4 h-4">
 

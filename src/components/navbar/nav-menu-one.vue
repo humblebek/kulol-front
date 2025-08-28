@@ -13,7 +13,7 @@
                 <li class="relative">
                     <p to="#" class="mdi mdi-translate">{{ currentLang.lang }}<span></span></p>
                     <ul class="sub-menu lg:absolute z-50 lg:top-full lg:left-0 lg:min-w-[150px] lg:invisible lg:transition-all lg:bg-white lg:dark:bg-title lg:py-[15px] lg:pr-[30px]">
-                        <li v-for="langItem in langItems" :key="langItem.code" class="cursor-pointer">
+                        <li v-for="(langItem, index) in langItems" :key="index" class="cursor-pointer">
                             <RouterLink>
                                 <p @click="setLanguage(langItem)">{{ langItem.lang }}</p>
                             </RouterLink>
