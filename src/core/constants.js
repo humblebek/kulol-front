@@ -23,6 +23,10 @@ export const navItems = ref([
         text: 'Media',
     },
     {
+        to: '/articles',
+        text: 'Articles',
+    },
+    {
         to: '/contact',
         text: 'Contact',
 

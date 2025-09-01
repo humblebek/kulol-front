@@ -5,6 +5,7 @@
 import { ofetch } from 'ofetch'
 
 import { useGlobalOverlay } from '@/composable/useGlobalOverlay'
+import { i18n } from '@/plugins/i18n';
 const { show, hide } = useGlobalOverlay()
 export const $api = ofetch.create({
   // timeout: 5000,
@@ -12,11 +13,12 @@ export const $api = ofetch.create({
   async onRequest({ options }) {
     // const accessToken = useCookie('accessToken').value
     // if (accessToken) {
-    //   options.headers = {
-    //     ...options.headers,
-    //     'Content-Language': _i18n.global.locale,
-    //     Authorization: `Bearer ${accessToken}`,
-    //   }
+      options.headers = {
+        ...options.headers,
+        "Accept-Language": i18n.global.locale.value,
+        'Content-Language': i18n.global.locale.value,
+        // Authorization: `Bearer ${accessToken}`,
+      }
     // }
     show();
   },

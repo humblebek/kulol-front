@@ -32,31 +32,33 @@
                             <p class="max-w-[474px] mt-3 md:mt-4 font-medium">We're here to address your inquiries, feedback, and partnership opportunities promptly and effectively. </p>
                         </div>
                         <div class="mt-8" data-aos="fade-up" data-aos-delay="100">
-                            <div>
-                                <div class="grid sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-5 sm:gap-6">
-                                    <div>
-                                        <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">{{ $t("Full Name") }}</label>
-                                        <input class="w-full h-12 md:h-14 bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="text" placeholder="Enter your full name">
+                            <Form :initial-values="contactForm" :validation-schema="buildSchema" ref="RefContactForm" @submit="onSubmit" v-slot="{ errors, isSubmitting }">
+                                <div>
+                                    <div class="grid sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-5 sm:gap-6">
+                                        <div>
+                                            <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">{{ $t("Full Name") }}</label>
+                                            <Field as="input" v-model="contactForm.full_name" name="full_name" class="w-full h-12 md:h-14 bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="text" placeholder="Enter your full name"/>
+                                            <ErrorMessage class="text-red-500 mt-1" name="full_name"/>
+                                        </div>
+                                        <div>
+                                            <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">Email</label>
+                                            <Field as="input" name="access" v-model="contactForm.access" class="w-full h-12 md:h-14 bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="email" placeholder="Enter your email address"/>
+                                            <ErrorMessage class="text-red-500 mt-1" name="access"/>
+                                        </div>
+                                        
                                     </div>
-                                    <div>
-                                        <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">Email</label>
-                                        <input class="w-full h-12 md:h-14 bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="email" placeholder="Enter your email address">
+                                    <div class="mt-5 sm:gap-6">
+                                        <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">Your Message</label>
+                                        <Field as="textarea" name="message" v-model="contactForm.message" class="w-full h-28 md:h-[170px] bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300"  placeholder="Type your message"></Field>
+                                        <ErrorMessage class="text-red-500 mt-1" name="message"/>
                                     </div>
-                                    <div class="col-span-2">
-                                        <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">Phone No.</label>
-                                        <input class="w-full h-12 md:h-14 bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="number" placeholder="Type your phone number">
+                                    <div class="mt-5">
+                                        <button  class="btn btn-solid" :disabled="isSubmitting" data-text="Submit">
+                                            <span>Submit</span>
+                                        </button>
                                     </div>
                                 </div>
-                                <div class="mt-5 sm:gap-6">
-                                    <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">Your Message</label>
-                                    <textarea class="w-full h-28 md:h-[170px] bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" name="Message" placeholder="Type your message"></textarea>
-                                </div>
-                                <div class="mt-5">
-                                    <router-link to="#" class="btn btn-solid" data-text="Submit">
-                                        <span>Submit</span>
-                                    </router-link>
-                                </div>
-                            </div>
+                            </Form>
                         </div>
                     </div>
                 </div>
@@ -87,35 +89,58 @@
     import Aos from 'aos';
 import FooterOne from '@/components/footer/footer-one.vue';
 import ScrollToTop from '@/components/scroll-to-top.vue';
+    import { Form, Field, ErrorMessage } from 'vee-validate'
+    import { z } from 'zod'
+// import { accessRule, phoneRe, required } from '@/core/validators';
+import { useToast } from 'vue-toastification';
+import { toTypedSchema } from '@vee-validate/zod';
+import { $api } from '@/utils/api';
+import { phoneRe } from '@/core/validators';
+
+const RefContactForm = ref();
+    const toast = useToast();
+    // import { toTypedSchema } from '@vee-validate/'
+    const contactForm = ref({
+        full_name: "",
+        access: "",
+        message: ""
+    })
+
+    const onSubmit = (values) => {
+        
+       $api("/contact", {
+        method: "POST",
+        body: contactForm.value
+       }).then((res) => {
+        contactForm.value = {
+            full_name: "",
+            access: "",
+            message: ""
+        };
+        RefContactForm.value.resetForm();
+        toast.success(res.message);
+
+       });
+
+    }
+    
+    const buildSchema = toTypedSchema(
+        z.object({
+            full_name: z.string().trim().min(1, { message: 'Ism majburiy' }),
+            access: z.string().trim()
+            .min(1, { message: 'Telefon yoki email majburiy' })
+            .refine(v => /\S+@\S+\.\S+/.test(v) || phoneRe.test(v), {
+                message: 'Telefon (E.164) yoki email kiriting'
+            }),
+            message: z.string().trim().min(1, { message: 'Xabar majburiy' }),
+        })
+    );
+
 
     onMounted(()=>{
         Aos.init()
-    })
+    });
+  
 
-
-    // const getData = (params) => {
-    //     // Fetch or process data based on params
-    //     console.log("Fetching data with params:", params);
-    // };
-    
-    const isOpen = ref(false)
-    const selectedOption = ref('Navana Furniture')
-
-    const options = [
-        "Navana Furniture",
-        "RFL Furniture",
-        "Gazi Furniture",
-        "Plastic Furniture",
-        "Luxury Furniture",
-    ];
-
-    const toggleDropdown = () =>{
-        isOpen.value = !isOpen.value
-    }
-
-    const handleSelect = (option,event) => {
-        event.stopPropagation();
-        selectedOption.value = option
-        isOpen.value = false
-    }
+   
 </script>

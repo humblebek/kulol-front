@@ -24,8 +24,8 @@
         <div class="container">
             <div class="max-w-1366 mx-auto">
                 <div class="hv3-service-wrapper bg-white dark:bg-title rounded-[10px] -mt-16 relative z-10 xl:flex xl:justify-between sm:gap-5 grid sm:grid-cols-2">
-                      <div v-for="(category, index) in categoryStore.categories" :key="index" class="relative">
-                        <router-link to="/product-category" class="group flex items-center gap-5 p-6">
+                      <div v-for="(category, index) in (categoryStore.categories ?? []).slice(0, 5)" :key="index" class="relative">
+                        <router-link :to="`/products?category_id=${category.id}`" class="group flex items-center gap-5 p-6">
                             <div class="w-14 md:w-[70px] h-14 p-[10px] md:h-[70px] flex items-center justify-center border border-primary rounded-[10px] group-hover:bg-primary duration-300">
                                 <div class="block group-hover:hidden">
                                     <!-- {{ item }} -->
@@ -37,26 +37,9 @@
                             </div>
                             <div>
                                 <h5 class="font-medium leading-none text-lg lg:text-xl">{{safeGet(category, `translations.${$i18n.locale}.name`, '')}}</h5>
-                                <!-- <p class="leading-none mt-[10px]">{{item.product}}</p> -->
                             </div>
                         </router-link>
                     </div>
-                    <!-- <div v-for="(item, index) in servicesData" :key="index" class="relative">
-                        <router-link to="/product-category" class="group flex items-center gap-5 p-6">
-                            <div class="w-14 md:w-[70px] h-14 p-[10px] md:h-[70px] flex items-center justify-center border border-primary rounded-[10px] group-hover:bg-primary duration-300">
-                                <div class="block group-hover:hidden">
-                                    <img :src="item.image" alt=""/>                           
-                                </div>
-                                <div class="hidden group-hover:block">
-                                    <img :src="item.image2" alt=""/>                           
-                                </div>
-                            </div>
-                            <div>
-                                <h5 class="font-medium leading-none text-lg lg:text-xl">{{item.title}}</h5>
-                                <p class="leading-none mt-[10px]">{{item.product}}</p>
-                            </div>
-                        </router-link>
-                    </div> -->
                 </div>
             </div>
         </div>

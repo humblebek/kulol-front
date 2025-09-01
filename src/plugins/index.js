@@ -2,6 +2,7 @@ import { i18n } from "./i18n"
 import {
   VueSpinnersPlugin,
 } from 'vue3-spinners'
+import Toast, { POSITION } from "vue-toastification";
 
 import { createHead } from '@unhead/vue/client'
 
@@ -18,5 +19,8 @@ export const registerPlugins = (app) => {
     app.use(head);
     app.use(i18n);
     app.use(VueAwesomePaginate);
+    app.use(Toast, {
+      position: POSITION.BOTTOM_RIGHT
+    })
     app.component("Head", Head)
 }

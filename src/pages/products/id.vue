@@ -11,7 +11,7 @@
                 <ul class="flex items-center gap-[10px] text-base md:text-lg leading-none font-normal text-title dark:text-white max-w-[1720px] mx-auto flex-wrap">
                     <li><router-link to="/">{{ $t("Home") }}</router-link></li>
                     <li>/</li>
-                    <li><router-link to="/shop-v1">{{ $t("Products") }}</router-link></li>
+                    <li><router-link to="/products">{{ $t("Products") }}</router-link></li>
                     <li>/</li>
                     <li class="text-primary">{{safeGet(product, `translations.${$i18n.locale}.name`, "")}}</li>
                 </ul>
@@ -52,7 +52,7 @@
                             {{ safeGet(product, `translations.${$i18n.locale}.name`, "") }}
                             </h2>
                             <h6 class="mt-2 font-semibold italic leading-none">
-                                {{ safeGet(product, `brand.translations.${$i18n.locale}.name`, "") }}, made in {{ safeGet(product, `brand.translations.${$i18n.locale}.address`, "") }}
+                                {{ safeGet(product, `brand.translations.${$i18n.locale}.name`, "") }}, {{ safeGet(product, `brand.translations.${$i18n.locale}.address`, "") }}
                             </h6>
 
                             <p class="sm:text-lg mt-5 md:mt-7 line-clamp-3">

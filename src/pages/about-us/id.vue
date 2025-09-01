@@ -3,6 +3,18 @@
         <title>{{ safeGet(user, `translations.${$i18n.locale}.name`, '') }}</title>
     </Head>
     <NavbarOne />
+
+     <div class="bg-[#F8F5F0] dark:bg-dark-secondary py-5 md:py-[30px]">
+            <div class="container-fluid">
+                <ul class="flex items-center gap-[10px] text-base md:text-lg leading-none font-normal text-title dark:text-white max-w-[1720px] mx-auto flex-wrap">
+                    <li><router-link to="/">{{ $t("Home") }}</router-link></li>
+                    <li>/</li>
+                    <li><router-link to="/articles">{{ $t("Articles") }}</router-link></li>
+                    <li>/</li>
+                    <li class="text-primary capitalize">{{safeGet(user, `translations.${$i18n.locale}.name`, "")}}</li>
+                </ul>
+            </div>
+        </div>
   <main class="min-h-screen bg-gray-50  py-10">
     <div class="container mx-auto max-w-7xl px-4" v-if="user">
       <!-- Title -->
