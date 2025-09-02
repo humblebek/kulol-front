@@ -19,7 +19,7 @@
                 @click="$router.push({path: '/products', query: {brand_id: item.id}})"
             >
             
-            <h2 class="text-xl cursor-pointer">{{ safeGet(item, `translations.${$i18n.locale}.name`, "") }}</h2>
+            <h2    @click="$router.push({path: '/products', query: {brand_id: item.id}})" class="text-xl cursor-pointer">{{ safeGet(item, `translations.${$i18n.locale}.name`, "") }}</h2>
             <!-- <img :src="item.image2" class="hidden dark:block" alt=""> -->
         </swiper-slide>
     </Swiper>
