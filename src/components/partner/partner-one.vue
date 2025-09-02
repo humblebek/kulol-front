@@ -14,20 +14,18 @@
         <swiper-slide v-for="(item, index) in partnerStore.brands ?? []" :key="index" class="flex items-center justify-center w-full" aria-label="partner logo">
             <!-- {{ item }} -->
             <img 
-                :src="storageUrl(safeGet(item, 'image', ''))" class="block" 
+                :src="storageUrl(safeGet(item, 'image', ''))" class="block cursor-pointer" 
                 :alt="safeGet(item, `translations.${$i18n.locale}.name`, '')"
+                @click="$router.push({path: '/products', query: {brand_id: item.id}})"
             >
             
-            <h2 class="text-xl">{{ safeGet(item, `translations.${$i18n.locale}.name`, "") }}</h2>
+            <h2 class="text-xl cursor-pointer">{{ safeGet(item, `translations.${$i18n.locale}.name`, "") }}</h2>
             <!-- <img :src="item.image2" class="hidden dark:block" alt=""> -->
         </swiper-slide>
     </Swiper>
 </template>
 
 <script setup>
-
-import { partnerData } from '@/data/data';
-
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay} from 'swiper/modules';
 import 'swiper/swiper-bundle.css';

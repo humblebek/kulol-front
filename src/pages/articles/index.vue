@@ -17,7 +17,7 @@
       <article
         v-for="a in articleStore.articles ?? []"
         :key="a.id"
-        class="group rounded-2xl border border-gray-100/80 cursor-pointer dark:border-slate-700/60 bg-white/90 dark:bg-slate-800/70 shadow-sm hover:shadow-md transition"
+        class="group rounded-2xl border border-gray-100/80 cursor-pointer bg-white/90 shadow-sm hover:shadow-md transition"
         data-aos="fade-up"
         @click="$router.push(`/articles/${a.id}`)"
       >
@@ -31,7 +31,7 @@
              {{ safeGet(a, `translations.${$i18n.locale}.title`)}}
             </span> -->
             <span class="text-gray-400" v-if="a.date">·</span>
-            <time v-if="a.date" class="text-gray-500 dark:text-gray-400">{{ formatDate(a.date) }}</time>
+            <time v-if="a.date" class="text-gray-500 ">{{ formatDate(a.date) }}</time>
           </div>
           <div>
               <h2 class="text-base sm:text-lg font-medium leading-snug group-hover:opacity-90">
@@ -51,11 +51,11 @@
         <div class="px-5 pb-5 -mt-2">
         <transition name="collapse">
             <div
-              class="prose prose-sm max-w-full dark:prose-invert prose-img:rounded-xl prose-a:underline-offset-4 line-clamp-3"
+              class="prose prose-sm max-w-full prose-img:rounded-xl prose-a:underline-offset-4 line-clamp-3"
               v-html="tr(a).text"
             />
         </transition>
-        <p class="text-sm mt-5 text-gray-500 text-right dark:text-gray-400">{{ safeGet(a, `translations.${$i18n.locale}.author`) }}</p>
+        <p class="text-sm mt-5 text-gray-500 text-right">{{ safeGet(a, `translations.${$i18n.locale}.author`) }}</p>
     </div>
       </article>
     </div>
