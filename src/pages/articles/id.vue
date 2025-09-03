@@ -1,8 +1,8 @@
 <template>
     <NavbarOne/>
-     <div class="bg-[#F8F5F0] dark:bg-dark-secondary py-5 md:py-[30px]">
+     <div class="bg-[#F8F5F0] py-5 md:py-[30px]">
             <div class="container-fluid">
-                <ul class="flex items-center gap-[10px] text-base md:text-lg leading-none font-normal text-title dark:text-white max-w-[1720px] mx-auto flex-wrap">
+                <ul class="flex items-center gap-[10px] text-base md:text-lg leading-none font-normal text-title  max-w-[1720px] mx-auto flex-wrap">
                     <li><router-link to="/">{{ $t("Home") }}</router-link></li>
                     <li>/</li>
                     <li><router-link to="/articles">{{ $t("Articles") }}</router-link></li>
@@ -25,18 +25,18 @@
     <div class="space-y-5">
       <article 
         v-if="article"
-        class="group rounded-2xl dark:border-slate-700/60 bg-white/90 dark:bg-slate-800/70 shadow-sm hover:shadow-md transition"
+        class="group rounded-2xl bg-white/90 shadow-sm hover:shadow-md transition"
         data-aos="fade-up"
       >
         <transition name="collapse">
           <div class="px-5 pb-5 -mt-2">
             <div
-              class="prose prose-sm max-w-full dark:prose-invert prose-img:rounded-xl prose-a:underline-offset-4"
+              class="prose prose-sm max-w-full  prose-img:rounded-xl prose-a:underline-offset-4"
               v-html="safeGet(article, `translations.${$i18n.locale}.text`)"
             />
           </div>
         </transition>
-        <p class="text-sm text-gray-500 text-right dark:text-gray-400">{{ safeGet(article, `translations.${$i18n.locale}.author`) }}</p>
+        <p class="text-sm text-gray-500 text-right ">{{ safeGet(article, `translations.${$i18n.locale}.author`) }}</p>
       </article>
       
     </div>
