@@ -5,8 +5,8 @@
             <div class="max-w-1366 mx-auto flex items-start gap-10 justify-between flex-col 2xl:flex-row">
                 <div class="max-w-md sm:mx-auto 2xl:mx-0 2xl:max-w-[208px] w-full sm:text-center 2xl:text-left">
                     <router-link class="cursor-pointer block" to="/" aria-label="Furnixar">
-                        <img :src="logoDark" alt="" class='dark:hidden w-[120px] sm:w-[200px]'/> 
-                        <img :src="logoLight" alt="" class='dark:block hidden w-[120px] sm:w-[200px]'/>
+                        <img src="" alt="" class='dark:hidden w-[120px] sm:w-[200px]'/> 
+                        <!-- <img :src="logoLight" alt="" class='dark:block hidden w-[120px] sm:w-[200px]'/> -->
                     </router-link>
                     <p class="mt-[15px]">Furnixar is a modern furniture template for an eCommerce website designed to help you create an impressive online store.</p>
                 </div>
@@ -22,7 +22,14 @@
                     <div>
                         <h4 class="text-white leading-none mb-5 md:mb-6 text-xl">{{ $t("Others") }}</h4>
                         <ul class="text-title text-white dark:text-white leading-none flex flex-col gap-4">
-                            <li v-for="(item, index) in footerLink2" :key="index" class="duration-100 hover:text-primary inline-block group"><router-link class="text-underline-primary" :to="item.link">{{item.name}}</router-link></li>
+                            <li class="duration-100 hover:text-primary inline-block group"><router-link class="gap-3 flex items-center" to="#">
+                                <!-- <i class="mdi mdi-facebook  dark:text-white duration-300 group-hover:text-primary"></i>                                      -->
+                                Etnotravel
+                            </router-link></li>
+                            <li class="duration-100 text-white hover:text-primary inline-block group"><router-link class="gap-3 flex items-center" to="#">
+                                <!-- <i class="mdi mdi-twitter  dark:text-white duration-300 group-hover:text-primary"></i>                       -->
+                                Etnotravel
+                            </router-link></li>
                         </ul>
                     </div>
                     <div class="h-[121px] w-[1px] transform translate-y-6 border border-dashed border-title border-white dark:border-white hidden lg:block"></div>
@@ -73,9 +80,6 @@
     import { navItems } from '@/core/constants';
     import { safeGet } from '@/core/helpers/utilFunctions';
 
-    import logoDark from '@/assets/img/svg/logo.svg'
-    import logoLight from '@/assets/img/svg/logo-light.svg'
-import { footerLink2 } from '@/data/nav-data';
 
 
     const categoryStore = useCategoryStore();

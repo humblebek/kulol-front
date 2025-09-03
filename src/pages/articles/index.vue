@@ -74,7 +74,7 @@ import FooterOne from '@/components/footer/footer-one.vue'
 import ScrollToTop from '@/components/scroll-to-top.vue'
 import { useArticleStore } from '@/stores/articleStore'
 import { safeGet } from '@/core/helpers/utilFunctions' 
-     import bg from '@/assets/img/shortcode/breadcumb.jpg'
+     import bg from '@/assets/img/bg/header.jpg'
 
 const { locale } = useI18n()
 const tr = (a) => {

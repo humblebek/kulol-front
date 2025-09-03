@@ -67,7 +67,7 @@
     import NavbarOne from '@/components/navbar/navbar-one.vue';
     import ScrollToTop from '@/components/scroll-to-top.vue';
     import FooterOne from '@/components/footer/footer-one.vue';
-    import bg from '@/assets/img/shortcode/breadcumb.jpg'
+    import bg from '@/assets/img/bg/header.jpg'
     import Aos from 'aos';
     import { useAboutStore } from '@/stores/aboutStore';
     import { storageUrl } from '@/core/helpers/envGetters';

@@ -87,7 +87,7 @@
     import ScrollToTop from '@/components/scroll-to-top.vue';
     import LayoutOne from '@/components/product/layout-one.vue';
 
-    import bg from '@/assets/img/shortcode/breadcumb.jpg'
+    import bg from '@/assets/img/bg/header.jpg'
     import Aos from 'aos';
 
     import { useCategoryStore } from '@/stores/categoryStore';

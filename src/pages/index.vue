@@ -5,7 +5,7 @@
     <div>
         <NavbarOne/>
 
-        <div class="pt-40 sm:pt-52 lg:pt-[280px] pb-52 lg:pb-[350px] 2xl:pb-[450px] bg-overlay dark:before:bg-title dark:before:bg-opacity-70" :style="{backgroundImage:'url(' + bg  + ')'}">
+        <div class="pt-40 sm:pt-52 lg:pt-[280px] pb-52 lg:pb-[350px] 2xl:pb-[450px] bg-overlay before:bg-title before:bg-black before:opacity-10" :style="{backgroundImage:'url(' + bg  + ')'}">
             <div class="container">
                 <div class="max-w-[751px] mx-auto">
                     <h2 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-snug sm:leading-snug md:leading-snug lg:leading-snug" data-aos="fade-up">A Collection of World Top Class <span class="font-secondary text-primary font-normal">Furniture</span></h2>
@@ -71,7 +71,7 @@
                 </div>
             </div>
         </div>
-      <div class="s-py-100 bg-[#f5f5f5] dark:bg-dark-secondary">
+       <div class="s-py-100 bg-[#f5f5f5] dark:bg-dark-secondary">
             <div class="container">
                 <div class="max-w-1366 mx-auto">
                     <div class="mb-6 pb-4 md:pb-6 border-b border-bdr-clr dark:border-bdr-clr-drk" data-aos="fade-up">
@@ -89,7 +89,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
         <!-- <div class="s-py-100 bg-[#f5f5f5] dark:bg-dark-secondary">
             <div class="container">
                 <div class="max-w-1366 mx-auto">
@@ -136,8 +136,9 @@
     import BestSeller from '@/components/product/best-seller.vue';
     import PartnerOne from '@/components/partner/partner-one.vue';
     import ScrollToTop from '@/components/scroll-to-top.vue';
+        import { featureOne } from '@/data/data';
 
-    import bg from '@/assets/img/home-v4/banner-bg.jpg'    
+    import bg from '@/assets/img/bg/home2.jpg'    
     import Aos from 'aos';
 import { useProductStore } from '@/stores/productStore';
 import { safeGet } from '@/core/helpers/utilFunctions';
@@ -145,7 +146,6 @@ import { storageUrl } from '@/core/helpers/envGetters';
 import { useCategoryStore } from '@/stores/categoryStore';
 import FooterOne from '@/components/footer/footer-one.vue';
 import NavbarOne from '@/components/navbar/navbar-one.vue';
-import { featureOne } from '@/data/data';
 import { Head } from '@unhead/vue/components'
 
     const productStore = useProductStore();

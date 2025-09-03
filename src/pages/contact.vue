@@ -20,7 +20,7 @@
         <div class="s-pb-100 s-pt-100">
             <div class="container-fluid">
                 <div class="max-w-[1720px] mx-auto flex justify-between gap-8">
-                    <div class="max-w-[894px] w-full hidden lg:block" data-aos="zoom-in">
+                    <div class="max-w-[894px] max-h-[620px] object-cover overflow-hidden w-full hidden lg:block" data-aos="zoom-in">
                         <img class="w-full" :src="bg2" alt="contct">
                     </div>
                     <div class="max-w-[725px] w-full mx-auto lg:mx-0">
@@ -82,9 +82,9 @@
 
 <script setup>
     import NavbarOne from '@/components/navbar/navbar-one.vue';
-    import bg from '@/assets/img/shortcode/breadcumb.jpg'
+    import bg from '@/assets/img/bg/header.jpg'
 
-    import bg2 from '@/assets/img/thumb/contact-thumb.jpg'
+    import bg2 from '@/assets/img/bg/contact.jpg'
     import { onMounted, ref } from 'vue';
     import Aos from 'aos';
 import FooterOne from '@/components/footer/footer-one.vue';

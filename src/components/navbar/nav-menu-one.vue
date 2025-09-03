@@ -127,7 +127,4 @@ import { DOCUMENT_DIRECTION, LANG_STORAGE_KEY } from '@/core/constants';
 ]
     const emit = defineEmits(['toggle-change']);
 
-    function handleToggle() {
-        emit('toggle-change', !props.toggle); // Correctly use `toggle` prop here
-    }
 </script>

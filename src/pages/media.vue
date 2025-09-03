@@ -90,9 +90,8 @@
     import FooterOne from '@/components/footer/footer-one.vue';
     import ScrollToTop from '@/components/scroll-to-top.vue';
 
-    import bg from '@/assets/img/shortcode/breadcumb.jpg'
+    import bg from '@/assets/img/bg/header.jpg'
     import Aos from 'aos';
-    import { portfolioTwo } from '@/data/portfolio-data';
 import { useMediaStore } from '@/stores/mediaStore';
 import { safeGet } from '@/core/helpers/utilFunctions';
 import { storageUrl } from '@/core/helpers/envGetters';
@@ -103,26 +102,12 @@ import { storageUrl } from '@/core/helpers/envGetters';
         Aos.init()
 
         getData();
-        updateFilteredItems();
     })
 
     const getData = (queries) => {
         mediaStore.getMedias(queries);
     }
 
-    const activeFilter = ref('*')
-
-    const filterItem = ref()
-
-    const tabChange = (item) => {
-        activeFilter.value = item
-        updateFilteredItems();
-    }
-
-    const updateFilteredItems = () =>{
-        filterItem.value = activeFilter.value === "*"
-        ? portfolioTwo
-        : portfolioTwo.filter((item) => item.category?.includes(activeFilter.value));
-    }
+ 
 
 </script>

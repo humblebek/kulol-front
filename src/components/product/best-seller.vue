@@ -39,7 +39,6 @@
 
 <script setup>
     import { ref, onMounted, computed, watch } from 'vue';
-    import product1 from '@/assets/img/home-v4/seller-02.jpg'
 import { getProducts } from '@/api/productApi';
 import { useCategoryStore } from '@/stores/categoryStore';
 import { safeGet } from '@/core/helpers/utilFunctions';
