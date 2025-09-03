@@ -1,5 +1,5 @@
 <template>
-   <div class="relative bg-overlay before:bg-title before:bg-opacity-95" :style="{backgroundImage:'url('+ bg +')'}">
+   <div class="relative bg-overlay before:bg-title before:bg-opacity-80" :style="{backgroundImage:'url('+ bg +')'}">
        <div class="s-py-100-50 text-white">
         <div class="container">
             <div class="max-w-1366 mx-auto flex items-start gap-10 justify-between flex-col 2xl:flex-row">
@@ -74,7 +74,7 @@
 </template>
 
 <script setup>
-    import bg from '@/assets/img/bg/footer.jpg'
+    import bg from '@/assets/img/bg/footer2.jpg'
     import { ref } from 'vue';
     import { useCategoryStore } from '@/stores/categoryStore';
     import { navItems } from '@/core/constants';

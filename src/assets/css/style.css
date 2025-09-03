@@ -15022,6 +15022,11 @@ body.quick-view-popup-overlay::before{
   --tw-bg-opacity: 0.7;
 }
 
+.before\:bg-opacity-80::before{
+  content: var(--tw-content);
+  --tw-bg-opacity: 0.8;
+}
+
 .before\:bg-opacity-95::before{
   content: var(--tw-content);
   --tw-bg-opacity: 0.95;
