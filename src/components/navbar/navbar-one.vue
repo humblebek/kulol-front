@@ -3,9 +3,10 @@
         <div class="container-fluid">
             <div class="flex items-center justify-between gap-x-6 max-w-[1720px] mx-auto relative py-[10px] sm:py-4 lg:py-0">
                 <router-link class="cursor-pointer block" to="/" aria-label="Furnixar">
-                    <img src="" alt="" class='dark:hidden w-[120px] sm:w-[200px]'/> 
+                    <img :src="logoDark" alt="" class='dark:hidden w-[120px] sm:w-[200px]'/> 
+                    <img :src="logoLight" alt="" class='dark:block hidden w-[120px] sm:w-[200px]'/>
                 </router-link>
-
+                
                 <div class="main-menu absolute z-50 w-full lg:w-auto top-full left-0 lg:static bg-white dark:bg-title lg:bg-transparent lg:dark:bg-transparent px-5 sm:px-[30px] py-[10px] sm:py-5 lg:px-0 lg:py-0" :class="toggle ? 'active' : ''">
                     <ul class="text-lg leading-none text-title dark:text-white lg:flex lg:gap-[30px]">
                         
@@ -22,6 +23,8 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { navItems } from '@/core/constants';
+import logoDark from '@/assets/img/svg/logo.svg'
+import logoLight from '@/assets/img/svg/logo-light.svg'
 
 import NavMenuOne from './nav-menu-one.vue';
 
