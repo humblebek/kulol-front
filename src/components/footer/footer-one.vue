@@ -22,36 +22,25 @@
                     <div>
                         <h4 class="text-white leading-none mb-5 md:mb-6 text-xl">{{ $t("Others") }}</h4>
                         <ul class="text-title text-white dark:text-white leading-none flex flex-col gap-4">
-                            <li class="duration-100 hover:text-primary inline-block group"><router-link class="gap-3 flex items-center" to="#">
+                            <li class="duration-100 hover:text-primary inline-block group"><a href="https://tsuos.uz/en/" target="_blank" class="gap-3 flex items-center" to="#">
                                 <!-- <i class="mdi mdi-facebook  dark:text-white duration-300 group-hover:text-primary"></i>                                      -->
-                                Etnotravel
-                            </router-link></li>
-                            <li class="duration-100 text-white hover:text-primary inline-block group"><router-link class="gap-3 flex items-center" to="#">
+                                TSUOS
+                            </a></li>
+                            <li class="duration-100 text-white hover:text-primary inline-block group"><a href="https://etnotravel.uz/" target="_blank" class="gap-3 flex items-center" to="#">
                                 <!-- <i class="mdi mdi-twitter  dark:text-white duration-300 group-hover:text-primary"></i>                       -->
                                 Etnotravel
-                            </router-link></li>
+                            </a></li>
                         </ul>
                     </div>
                     <div class="h-[121px] w-[1px] transform translate-y-6 border border-dashed border-title border-white dark:border-white hidden lg:block"></div>
                     <div>
                         <h4 class="leading-none text-white mb-5 md:mb-6 text-xl">{{ $t("Social media") }}</h4>
                         <ul class="text-title text-white dark:text-white leading-none flex flex-col gap-4">
-                            <li class="duration-100 hover:text-primary inline-block group"><router-link class="gap-3 flex items-center" to="#">
-                                <i class="mdi mdi-facebook  dark:text-white duration-300 group-hover:text-primary"></i>                                     
-                                Facebook
-                            </router-link></li>
-                            <li class="duration-100 text-white hover:text-primary inline-block group"><router-link class="gap-3 flex items-center" to="#">
-                                <i class="mdi mdi-twitter  dark:text-white duration-300 group-hover:text-primary"></i>                      
-                                Twitter
-                            </router-link></li>
-                            <li class="duration-100 text-white hover:text-primary inline-block group"><router-link class="gap-3 flex items-center" to="#">
-                                <i class="mdi mdi-instagram  dark:text-white duration-300 group-hover:text-primary"></i>                        
-                                Instagram
-                            </router-link></li>
-                            <li class="duration-100 text-white hover:text-primary inline-block group"><router-link class="gap-3 flex items-center" to="#">
-                                <i class="mdi mdi-linkedin dark:text-white duration-300 group-hover:text-primary"></i>                     
-                                Linkedin
-                            </router-link></li>
+                            <li v-for="link, index in socialMediaLinks" :key="index" class="duration-100 hover:text-primary inline-block group"><a class="gap-3 flex items-center" :href="link.link" target="_blank">
+                                <i :class="`${link.icon}  dark:text-white duration-300 group-hover:text-primary`"></i>                                     
+                                {{ link.name }}
+                            </a></li>
+                           
                         </ul>
                     </div>
                     <div class="h-[121px] w-[1px] transform translate-y-6 border border-white border-dashed border-title dark:border-white hidden lg:block"></div>
@@ -64,7 +53,6 @@
                                 </router-link></li>
                         </ul>
                     </div>
-                   
                 </div> 
             </div>
             <p class="max-w-1366 mx-auto mt-12">© {{year}} Furnixar Develop with <i class="fa-solid fa-heart text-red-600"></i> by <a href="https://shreethemes.in/" target="_blank" className='ms-1'>Shreethemes</a></p>
@@ -84,4 +72,27 @@
 
     const categoryStore = useCategoryStore();
     const year = ref(new Date().getFullYear());
+
+    const socialMediaLinks = ref([
+    {   
+        icon: "mdi mdi-facebook",
+        name: "Facebook",
+        link: "https://www.facebook.com/people/Etnotravel-Uzbekistan/61567360602125/?mibextid=ZbWKwL"
+    },
+    {
+        icon: "mdi mdi-instagram",
+        name: "Instagram",
+        link: "https://www.instagram.com/etnotraveluzb"   
+    },
+    {
+        icon: "ti ti-brand-telegram",
+        name: "Telegram",
+        link: "https://t.me/etnotravelUZB"
+    },
+    {
+        icon: "mdi mdi-youtube",
+        name: "Youtube",
+        link: "youtube.com/@EtnotravelUzb"
+    }
+    ]);
 </script>

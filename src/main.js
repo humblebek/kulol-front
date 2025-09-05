@@ -7,6 +7,7 @@ import { registerPlugins } from './plugins'
 import './assets/css/style.css'
 import '@mdi/font/css/materialdesignicons.css' 
 import "vue-toastification/dist/index.css";
+import '@tabler/icons-webfont/dist/tabler-icons.min.css'
 
 
 import { getItem } from './core/helpers/localeStorage'
