@@ -22,6 +22,10 @@
                     <div>
                         <h4 class="text-white leading-none mb-5 md:mb-6 text-xl">{{ $t("Others") }}</h4>
                         <ul class="text-title text-white dark:text-white leading-none flex flex-col gap-4">
+                            <li class="duration-100 hover:text-primary inline-block group"><a href="https://gov.uz/uz/innovation" target="_blank" class="gap-3 flex items-center" to="#">
+                                <!-- <i class="mdi mdi-facebook  dark:text-white duration-300 group-hover:text-primary"></i>                                      -->
+                                Innovatsion Agentlik
+                            </a></li>
                             <li class="duration-100 hover:text-primary inline-block group"><a href="https://tsuos.uz/en/" target="_blank" class="gap-3 flex items-center" to="#">
                                 <!-- <i class="mdi mdi-facebook  dark:text-white duration-300 group-hover:text-primary"></i>                                      -->
                                 TSUOS
