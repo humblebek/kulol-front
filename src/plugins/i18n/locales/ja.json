@@ -21,5 +21,11 @@
     "Social media": "ソーシャルメディア",
     "Others": "その他",
     "Contact us": "お問い合わせ",
-    "Full Name": "氏名"
+    "Full Name": "氏名",
+    "Articles": "記事",
+    "Email": "メール (メールアドレス)",
+    "Your Message": "あなたのメッセージ",
+    "Submit": "送信",
+    "Field is required": "この項目は必須です",
+    "Enter your phone or email": "電話番号またはメールアドレスを入力してください"
 }

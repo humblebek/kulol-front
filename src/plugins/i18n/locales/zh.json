@@ -22,5 +22,10 @@
     "Others": "其他",
     "Contact us": "联系我们",
     "Full Name": "全名",
-    "Email": "电子邮件"
+    "Email": "电子邮件",
+    "Articles": "文章",
+    "Your Message": "你的信息",
+    "Submit": "提交",
+    "Field is required": "此字段为必填项",
+    "Enter your phone or email": "请输入电话号码或电子邮箱"
 }

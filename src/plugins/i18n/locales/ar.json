@@ -21,6 +21,12 @@
     "Social media": "وسائل التواصل الاجتماعي",
     "Others": "أخرى",
     "Contact us": "اتصل بنا",
-    "Full Name": "الاسم الكامل"
+    "Full Name": "الاسم الكامل",
+    "Email": "البريد الإلكتروني",
+    "Articles": "مقالات",
+    "Your Message": "رسالتك",
+    "Submit": "إرسال",
+    "Field is required": "هذا الحقل مطلوب",
+    "Enter your phone or email": "أدخل رقم الهاتف أو البريد الإلكتروني"
     
 }

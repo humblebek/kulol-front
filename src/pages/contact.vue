@@ -37,24 +37,24 @@
                                     <div class="grid sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-5 sm:gap-6">
                                         <div>
                                             <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">{{ $t("Full Name") }}</label>
-                                            <Field as="input" v-model="contactForm.full_name" name="full_name" class="w-full h-12 md:h-14 bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="text" placeholder="Enter your full name"/>
+                                            <Field as="input" v-model="contactForm.full_name" name="full_name" class="w-full h-12 md:h-14 bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="text"/>
                                             <ErrorMessage class="text-red-500 mt-1" name="full_name"/>
                                         </div>
                                         <div>
-                                            <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">Email</label>
-                                            <Field as="input" name="access" v-model="contactForm.access" class="w-full h-12 md:h-14 bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="email" placeholder="Enter your email address"/>
+                                            <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">{{ $t("Email") }}</label>
+                                            <Field as="input" name="access" v-model="contactForm.access" class="w-full h-12 md:h-14 bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300" type="email"/>
                                             <ErrorMessage class="text-red-500 mt-1" name="access"/>
                                         </div>
                                         
                                     </div>
                                     <div class="mt-5 sm:gap-6">
-                                        <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">Your Message</label>
-                                        <Field as="textarea" name="message" v-model="contactForm.message" class="w-full h-28 md:h-[170px] bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300"  placeholder="Type your message"></Field>
+                                        <label class="text-base md:text-lg text-title dark:text-white leading-none mb-2.5 block">{{ $t("Your Message") }}</label>
+                                        <Field as="textarea" name="message" v-model="contactForm.message" class="w-full h-28 md:h-[170px] bg-snow dark:bg-dark-secondary border border-[#E3E5E6] text-title dark:text-white focus:border-primary p-4 outline-none duration-300"></Field>
                                         <ErrorMessage class="text-red-500 mt-1" name="message"/>
                                     </div>
                                     <div class="mt-5">
-                                        <button  class="btn btn-solid" :disabled="isSubmitting" data-text="Submit">
-                                            <span>Submit</span>
+                                        <button  class="btn btn-solid" :disabled="isSubmitting" :data-text="$t('Submit')">
+                                            <span>{{ $t("Submit") }}</span>
                                         </button>
                                     </div>
                                 </div>
@@ -96,7 +96,9 @@ import { useToast } from 'vue-toastification';
 import { toTypedSchema } from '@vee-validate/zod';
 import { $api } from '@/utils/api';
 import { phoneRe } from '@/core/validators';
+import { useI18n } from 'vue-i18n';
 
+const {t} = useI18n();
 const RefContactForm = ref();
     const toast = useToast();
     // import { toTypedSchema } from '@vee-validate/'
@@ -126,13 +128,13 @@ const RefContactForm = ref();
     
     const buildSchema = toTypedSchema(
         z.object({
-            full_name: z.string().trim().min(1, { message: 'Ism majburiy' }),
+            full_name: z.string().trim().min(1, { message: t("Field is required") }),
             access: z.string().trim()
-            .min(1, { message: 'Telefon yoki email majburiy' })
+            .min(1, { message: t("Field is required") })
             .refine(v => /\S+@\S+\.\S+/.test(v) || phoneRe.test(v), {
-                message: 'Telefon (E.164) yoki email kiriting'
+                message: t("Enter your phone or email")
             }),
-            message: z.string().trim().min(1, { message: 'Xabar majburiy' }),
+            message: z.string().trim().min(1, { message: t("Field is required") }),
         })
     );
 
