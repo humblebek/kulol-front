@@ -59,7 +59,7 @@
                        <div class="flex justify-end mt-5">
                            <vue-awesome-paginate
                                :total-items="products.pagination.total"
-                               v-model="filters.current_page"
+                               v-model="filters.page"
                                :items-per-page="5"
                                :max-pages-shown="5"
                                paginate-buttons-class="btn-pagination"
@@ -103,12 +103,12 @@ const partnerStore = usePartnerStore();
     const filters = ref({
         category_id: null,
         brand_id: null,
-        current_page: 1,
+        page: 1,
     });
     const products = ref({data:[], pagination: {
         total: 0,
         per_page: 12,
-        current_page: 1,
+        page: 1,
 
     }});
 
