@@ -6,7 +6,6 @@
 
             </div>
             <div class="mt-5">
-                {{ safeGet(fifthProduct, 'images') }}
                 <div class="grid lg:grid-cols-2 grid-cols-1 gap-5">
                     <div class="grid md:grid-cols-2 grid-cols-1 gap-5">
                         <div class="" v-for="(item, index) in safeGet(products, 'data', []).slice(0,4)" :key="index">
