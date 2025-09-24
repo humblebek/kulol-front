@@ -3,12 +3,11 @@
        <div class="s-py-100-50 text-white">
         <div class="container">
             <div class="max-w-1366 mx-auto flex items-start gap-10 justify-between flex-col 2xl:flex-row">
-                <div class="max-w-md sm:mx-auto 2xl:mx-0 2xl:max-w-[208px] w-full sm:text-center 2xl:text-left">
+                <div class="sm:mx-auto 2xl:mx-0 2xl:max-w-[245px] w-full sm:text-center 2xl:text-left">
                     <router-link class="cursor-pointer block" to="/" aria-label="Furnixar">
-                        <img src="" alt="" class='dark:hidden w-[120px] sm:w-[200px]'/> 
-                        <!-- <img :src="logoLight" alt="" class='dark:block hidden w-[120px] sm:w-[200px]'/> -->
+                        <img :src="logoDark" alt="" class='m-auto h-[60px] sm:h-[60px]'/>
                     </router-link>
-                    <p class="mt-[15px]">Furnixar is a modern furniture template for an eCommerce website designed to help you create an impressive online store.</p>
+                    <p class="mt-[15px]">{{$t("Artisan3D is a modern puppetry & craftsmanship platform dedicated to preserving tradition and inspiring creativity. Discover unique handmade designs, cultural heritage, and personalized art — all in one place.")}}</p>
                 </div>
                 <div class="hidden 2xl:block h-[121px] w-[1px] transform translate-y-6 border border-white border-dashed border-title dark:border-white"></div>
                 <div class="2xl:max-w-[1057px] w-full grid text-white grid-cols-2 sm:grid-cols-3 lg:flex items-start justify-between gap-10">
@@ -72,7 +71,7 @@
     import { navItems } from '@/core/constants';
     import { safeGet } from '@/core/helpers/utilFunctions';
 
-
+import logoDark from '@/assets/logo1.png'
 
     const categoryStore = useCategoryStore();
     const year = ref(new Date().getFullYear());

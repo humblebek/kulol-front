@@ -8,15 +8,8 @@
         <div class="pt-40 sm:pt-52 lg:pt-[280px] pb-52 lg:pb-[350px] 2xl:pb-[450px] bg-overlay before:bg-title before:bg-black before:opacity-10" :style="{backgroundImage:'url(' + bg  + ')'}">
             <div class="container">
                 <div class="max-w-[751px] mx-auto">
-                    <h2 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-snug sm:leading-snug md:leading-snug lg:leading-snug" data-aos="fade-up">A Collection of World Top Class <span class="font-secondary text-primary font-normal">Furniture</span></h2>
-                    <div data-aos="fade-up" data-aos-delay="100">
-                        <router-link to="/shop-v1" class="group md:text-lg font-medium leading-none text-title dark:text-white flex items-center gap-3 mt-3">
-                            <span class="text-underline leading-none">Go to Shop </span>
-                            <svg class="fill-current text-title dark:text-white w-5 md:w-7" viewBox="0 0 31 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M30.2303 6.58892C30.5232 6.29603 30.5232 5.82116 30.2303 5.52826L25.4574 0.755293C25.1645 0.462399 24.6896 0.462399 24.3967 0.755293C24.1038 1.04819 24.1038 1.52306 24.3967 1.81595L28.6393 6.05859L24.3967 10.3012C24.1038 10.5941 24.1038 11.069 24.3967 11.3619C24.6896 11.6548 25.1645 11.6548 25.4574 11.3619L30.2303 6.58892ZM0 6.80859L29.7 6.80859V5.30859L0 5.30859L0 6.80859Z"/>
-                            </svg>                        
-                        </router-link>
-                    </div>
+                    <h2 class="text-3xl sm:text-5xl md:text-6xl leading-snug sm:leading-snug md:leading-snug lg:leading-snug " data-aos="fade-up">{{$t("Unique Handmade Designs for a Modern World")}} <span class="font-secondary text-primary font-normal">Artisan3d</span></h2>
+                  
                 </div>
             </div>
         </div>
@@ -78,12 +71,12 @@
                         <h2 class="font-semibold leading-none text-2xl sm:text-3xl lg:text-4xl text-center  sm:text-left">Why you Choose Us</h2>
                     </div>
                     <div class="grid sm:grid-cols-2 lg:flex lg:justify-between gap-7 flex-wrap lg:flex-nowrap">
-                        <div v-for="(item, index) in featureOne.slice(0,4)" :key="index" class="lg:max-w-[290px] w-full 2xl:flex items-center justify-between gap-7" data-aos="fade-up" data-aos-delay="200">
+                        <div v-for="(item, index) in whyYouShouldChooseUs.slice(0,4)" :key="index" class="lg:max-w-[290px] w-full 2xl:flex items-center justify-between gap-7" data-aos="fade-up" data-aos-delay="200">
                             <div class="w-[1px] h-[120px] border-l border-dashed border-primary hidden 2xl:block" :class="index === 0 ? '2xl:hidden' : ''"></div>
                             <div class="text-center sm:text-left lg:max-w-[220px] w-full">
                                 <img :src="item.image" alt="" class='size-12 mx-auto sm:mx-0' />
-                                <h5 class="font-semibold text-xl md:text-2xl mt-3 md:mt-7">Easy to Return</h5>
-                                <p class="mt-2 sm:mt-3">Satisfaction guaranteed or your money back! Enjoy stress-free returns with our hassle-free process. </p>
+                                <h5 class="font-semibold text-xl md:text-2xl mt-3 md:mt-7">{{ item.title }}</h5>
+                                <p class="mt-2 sm:mt-3">{{ item.desc }} </p>
                             </div>
                         </div>
                     </div>
@@ -147,7 +140,15 @@ import { useCategoryStore } from '@/stores/categoryStore';
 import FooterOne from '@/components/footer/footer-one.vue';
 import NavbarOne from '@/components/navbar/navbar-one.vue';
 import { Head } from '@unhead/vue/components'
+import { useI18n } from 'vue-i18n';
 
+import fea1 from '@/assets/img/svg/fea-1.svg'
+import fea2 from '@/assets/img/svg/fea-2.svg'
+import fea3 from '@/assets/img/svg/fea-3.svg'
+import fea4 from '@/assets/img/svg/fea-4.svg'
+import fea5 from '@/assets/img/svg/fea-5.svg'
+
+    const { t } = useI18n();
     const productStore = useProductStore();
     const categoryStore = useCategoryStore();
     const filters = ref({
@@ -155,15 +156,40 @@ import { Head } from '@unhead/vue/components'
         status_id: ""
     });
 
+    const whyYouShouldChooseUs = computed(() => {
+        return [
+            {   
+                image: fea1,
+                title: t("Unique Handmade Designs"),
+                desc: t("Every product is crafted with care and creativity. You won’t find mass-produced items here—each puppet/art piece has its own story.")
+            },
+            {   
+                image: fea2,
+                title: t("High-Quality Materials"),
+                desc: t("We use safe, durable, and eco-friendly materials, ensuring your puppets and crafts last for years.")
+            },
+            {   
+                image: fea3,
+                title: t("Cultural & Artistic Value"),
+                desc: t("Our designs preserve traditional craftsmanship while blending modern 3D techniques—perfect for collectors, educators, and art lovers.")
+            },
+            {   
+                image: fea4,
+                title: t("Custom Orders & Personalization"),
+                desc: t("Want something special? We create customized puppets and 3D crafts tailored to your needs, whether for theatre, education, or home décor.")
+            },
+        ]
+    })
     const firstCategoryId = computed(() => {
-        return categoryStore.categories && categoryStore.categories.length ? categoryStore.categories[0].id : null;
+        return safeGet(firstCategory.value, 'id', null);
     })
 
     const firstCategory = computed(() => {
-        return categoryStore.categories && categoryStore.categories.length ? categoryStore.categories[0] : null;
+        return categoryStore.categories && categoryStore.categories.length ? categoryStore.categories.filter(item => safeGet(item, 'order', '') == 100)[0] : null;
     })
 
     const getData = () => {
+        console.log('filters', filters.value);
         productStore.getProducts({
             ...filters.value,
             ...productStore.pagination
@@ -172,6 +198,7 @@ import { Head } from '@unhead/vue/components'
 
     watch(()=>firstCategoryId.value, (newVal)=>{
         if(newVal){
+            console.log('newVal', newVal);
             filters.value.category_id = newVal;
             getData();
         }

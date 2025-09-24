@@ -51,11 +51,11 @@ import { storageUrl } from '@/core/helpers/envGetters';
     }});
     const categoryStore = useCategoryStore();
     const secondCategoryId = computed(() => {
-        return safeGet(categoryStore.categories, '1.id', null);
+        return safeGet(secondCategory.value, 'id', null);
     })
 
     const secondCategory = computed(() => {
-        return safeGet(categoryStore.categories, '1', null);
+        return categoryStore.categories && categoryStore.categories.length ? categoryStore.categories.filter(item => safeGet(item, 'order', '') == 200)[0] : null;
     })
 
     watch(() => secondCategoryId.value, (newVal) => {
