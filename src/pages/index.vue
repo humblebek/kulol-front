@@ -68,7 +68,7 @@
             <div class="container">
                 <div class="max-w-1366 mx-auto">
                     <div class="mb-6 pb-4 md:pb-6 border-b border-bdr-clr dark:border-bdr-clr-drk" data-aos="fade-up">
-                        <h2 class="font-semibold leading-none text-2xl sm:text-3xl lg:text-4xl text-center  sm:text-left">Why you Choose Us</h2>
+                        <h2 class="font-semibold leading-none text-2xl sm:text-3xl lg:text-4xl text-center  sm:text-left">{{ $t("Why you Choose Us") }}</h2>
                     </div>
                     <div class="grid sm:grid-cols-2 lg:flex lg:justify-between gap-7 flex-wrap lg:flex-nowrap">
                         <div v-for="(item, index) in whyYouShouldChooseUs.slice(0,4)" :key="index" class="lg:max-w-[290px] w-full 2xl:flex items-center justify-between gap-7" data-aos="fade-up" data-aos-delay="200">
